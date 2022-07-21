@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using MyProject.ViewModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ViewersPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
@@ -9,14 +10,18 @@
         <div class="container">
             
             <div class="row section">
-                <div class="col-md-12">
-                    @*Model.Value("bodyText")*@
-                    
+                <div class="col-md-6">
+                    @*@await Html.PartialAsync("CustomerForm")*@
                     @{
                         Html.RenderPartial("~/Views/Partials/CustomerForm.cshtml", new CustomerViewModel());
                      }
 				</div>
+				
+                <div class="col-md-6">
+                    @Model.Value("body")
+                </div>
                 @*<h1>_customerService.GetAllCustomersAsync()</h1>*@
             </div>
+            
 
         </div>

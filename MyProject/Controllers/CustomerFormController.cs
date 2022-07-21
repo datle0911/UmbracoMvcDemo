@@ -17,10 +17,14 @@ public class CustomerFormController : SurfaceController
     [ActionName("Submit")]
     public IActionResult Submit(CustomerViewModel model)
     {
-        if(model is null)
+        if( model.CustomerUserName is null ||
+            model.CustomerPassword is null || 
+            model.CustomerFullName is null || 
+            model.CustomerPhoneNumber is null || 
+            model.CustomerEmail is null)
         {
-            return BadRequest("failed");
+            return BadRequest("Failed to save (one or more index be null)");
         }
-        return Ok("saved");
+        return Ok("Infomation Saved");
     }
 }

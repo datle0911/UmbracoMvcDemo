@@ -1,0 +1,55 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+@*
+    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+    This is the home page for a standard website.
+    It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+@{ var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray(); }
+
+@if (selection?.Length > 0)
+{
+    <div class="container">
+        <nav class ="navbar navbar-expand navbar-light">
+            <a class ="navbar-brant font-weight-bold" href="@Model.Root().Url()">Umbraco Demo</a>
+            <!-- Links -->
+            <u1 class="navbar-nav">
+            @foreach (var item in selection)
+            {
+                @*<li class="@(item.IsAncestorOrSelf(Model?.Content) ? "current" : null)">
+                    <a href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                </li>*@
+                
+                <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
+                    <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                </li>
+            }
+        </u1>
+        </nav>
+    </div>
+}
+
+@*<div class="container">
+    <nav class ="navbar navbar-expand navbar-light">
+        <a class ="navbar-brant font-weight-bold" href="index.html">Umbraco Demo</a>
+        <!-- Links -->
+        <u1 class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="Content.html">Content Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Customer.html">Content 2 Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ViewersPage.html">Viewers Page</a>
+            </li>
+        </u1>
+    </nav>
+</div>*@
