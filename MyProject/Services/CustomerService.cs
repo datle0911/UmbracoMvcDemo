@@ -34,4 +34,12 @@ public class CustomerService : ICustomerService
 
         return null;
     }
+
+    public async Task<Response> PostCustomerAsync(CustomerViewModel customer)
+    {
+        var response = await _httpClient.PostAsJsonAsync("https://deliverywebapi.azurewebsites.net/api/customers", customer);
+        
+        var result = new Response(response.Content, (Int32)response.StatusCode);
+        return result;
+    }
 }

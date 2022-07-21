@@ -1,9 +1,11 @@
 ﻿namespace MyProject.Controllers;
 public class CustomerFormController : SurfaceController
 {
-    public CustomerFormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) 
+    private readonly ICustomerService _customerService;
+    public CustomerFormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, ICustomerService customerService) 
         : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
     {
+        _customerService = customerService;
     }
 
     public IActionResult Render()
@@ -15,7 +17,7 @@ public class CustomerFormController : SurfaceController
     [HttpPost]
     [ValidateUmbracoFormRouteString]
     [ActionName("Submit")]
-    public IActionResult Submit(CustomerViewModel model)
+    public async Task<IActionResult> SubmitOnPost(CustomerViewModel model)
     {
         if( model.CustomerUserName is null ||
             model.CustomerPassword is null || 
@@ -25,6 +27,7 @@ public class CustomerFormController : SurfaceController
         {
             return BadRequest("Failed to save (one or more index be null)");
         }
-        return Ok("Infomation Saved");
+        var result = await _customerService.PostCustomerAsync(model);
+        return Ok(result);
     }
 }
