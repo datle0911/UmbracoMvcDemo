@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyProject.Interfaces;
+
+@inject ICustomerService _customerService
+@{
+    var customers = await _customerService.GetAllCustomersAsync(); 
+}
+@if (customers.Count() > 0)
+{
+    <div class="container">
+        <nav class ="navbar navbar-expand navbar-light">
+            <u1 class="navbar-static-top">
+                <h5>LIST: <br /></h5>
+            </u1>
+            <u1 class="navbar-nav">
+                @foreach (var customer in customers)
+                {
+                    <td>DONATOR: @customer.CustomerFullName - </td>
+                    <td>NICKNAME: @customer.CustomerUserName - </td>
+                    <td>EMAIL: @customer.CustomerEmail </td>
+                    <br />
+                }
+            </u1>
+        </nav>
+    </div>
+}
