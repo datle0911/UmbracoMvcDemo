@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MyProject.ViewModels.CustomerViewModel
+@using(Html.BeginUmbracoForm("Submit", "CustomerForm"))
+{
+    <h2>The Customer</h2>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CustomerUserName)
+        @Html.TextBoxFor(c => c.CustomerUserName, new { @class="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CustomerPassword)
+        @Html.TextBoxFor(c => c.CustomerPassword, new { @class="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CustomerFullName)
+        @Html.TextBoxFor(c => c.CustomerFullName, new { @class="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CustomerPhoneNumber)
+        @Html.TextBoxFor(c => c.CustomerPhoneNumber, new { @class="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CustomerEmail)
+        @Html.TextBoxFor(c => c.CustomerEmail, new { @class="form-control"})
+    </div>
+
+    <input type="submit" value="Submit" />
+}
