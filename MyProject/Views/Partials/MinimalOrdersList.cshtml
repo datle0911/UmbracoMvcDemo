@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyProject.Interfaces;
+
+@inject IOrderService _orderService
+@{
+    var minimalOrders = await _orderService.GetMiminalOrdersAsync();
+}
+@if (minimalOrders.Count() > 0)
+{
+    <div class="container">
+        <nav class ="navbar navbar-expand navbar-light">
+            <u1 class="navbar-static-top">
+                <h5>ORDERS LIST: <br /></h5>
+            </u1>
+            <u1 class="navbar-nav">
+                @foreach (var minimalOrder in minimalOrders)
+                {
+                    <td>INFO: @minimalOrder.CustomerFullName - </td>
+                    <td>TIMESTAMP: @minimalOrder.OrderTimestamp - </td>
+                    <td>ADDRESS: @minimalOrder.OrderAddress - </td>
+                    <td>PRICE: @minimalOrder.TotalPrice $</td>
+                    <br />
+                }
+            </u1>
+        </nav>
+    </div>
+}
