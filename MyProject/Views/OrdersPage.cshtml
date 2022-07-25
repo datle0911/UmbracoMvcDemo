@@ -8,19 +8,10 @@
 
 <!-- Main container -->
         <div class="container">
-            
             <div class="row section">
-                <div class="col-md-6">
-                    @*@await Html.PartialAsync("CustomerForm")*@
-                    @{
-                        Html.RenderPartial("~/Views/Partials/CustomerForm.cshtml", new CustomerViewModel());
-                     }
-				</div>
-
-                <div class="col-md-12">
-                    @await Html.PartialAsync("MinimalOrdersList")
-                </div>
+                <h2>
+                    @Model.Value("info")
+                </h2>
             </div>
-            
-
+            @await Html.PartialAsync("MinimalOrdersList")   
         </div>

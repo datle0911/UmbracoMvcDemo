@@ -5,23 +5,40 @@
 @{
     var minimalOrders = await _orderService.GetMiminalOrdersAsync();
 }
-@if (minimalOrders.Count() > 0)
-{
-    <div class="container">
-        <nav class ="navbar navbar-expand navbar-light">
-            <u1 class="navbar-static-top">
-                <h5>ORDERS LIST: <br /></h5>
-            </u1>
-            <u1 class="navbar-nav">
-                @foreach (var minimalOrder in minimalOrders)
-                {
-                    <td>INFO: @minimalOrder.CustomerFullName - </td>
-                    <td>TIMESTAMP: @minimalOrder.OrderTimestamp - </td>
-                    <td>ADDRESS: @minimalOrder.OrderAddress - </td>
-                    <td>PRICE: @minimalOrder.TotalPrice $</td>
-                    <br />
-                }
-            </u1>
-        </nav>
-    </div>
-}
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>CUSTOMER</th>
+            <th>ORDER TIMESTAMP</th>
+            <th>ADDRESS</th>
+            <th>TOTAL PRICE</th>
+            <th>STATUS</th>
+            <th>TRACKING</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var minimalOrder in minimalOrders)
+        {
+            <tr>
+                <td width="14%">
+                    @minimalOrder.CustomerFullName
+                </td>
+                    <td width="14%">
+                    @minimalOrder.OrderTimestamp
+                </td>
+                <td width="30%">
+                    @minimalOrder.OrderAddress
+                </td>
+                <td width="14%">
+                    @minimalOrder.TotalPrice $
+                </td>
+                <td width="14%">
+                    @minimalOrder.OrderStatus
+                </td>
+                <td width="14%">
+                    @minimalOrder.OrderTracking
+                </td>
+            </tr>
+        }
+    </tbody>     
+</table>

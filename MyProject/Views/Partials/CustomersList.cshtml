@@ -5,22 +5,22 @@
 @{
     var customers = await _customerService.GetAllCustomersAsync(); 
 }
-@if (customers.Count() > 0)
-{
-    <div class="container">
-        <nav class ="navbar navbar-expand navbar-light">
-            <u1 class="navbar-static-top">
-                <h5>LIST: <br /></h5>
-            </u1>
-            <u1 class="navbar-nav">
-                @foreach (var customer in customers)
-                {
-                    <td>DONATOR: @customer.CustomerFullName - </td>
-                    <td>NICKNAME: @customer.CustomerUserName - </td>
-                    <td>EMAIL: @customer.CustomerEmail </td>
-                    <br />
-                }
-            </u1>
-        </nav>
-    </div>
-}
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>DONATOR</th>
+            <th>NICKNAME</th>
+            <th>EMAIL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var customer in customers)
+        {  
+            <tr>
+                <td width="33%">@customer.CustomerFullName</td>
+                <td width="33%">@customer.CustomerUserName</td>
+                <td width="33%">@customer.CustomerEmail</td>
+            </tr>
+        }
+    </tbody>     
+</table>
