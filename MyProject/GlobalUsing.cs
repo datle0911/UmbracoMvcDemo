@@ -5,6 +5,7 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.ViewEngines;
+global using Microsoft.Extensions.Options;
 
 global using System;
 
@@ -25,6 +26,9 @@ global using Umbraco.Cms.Infrastructure.Persistence;
 global using MyProject.Models;
 global using MyProject.Models.Enums;
 global using MyProject.ViewModels;
+global using MyProject.ViewModels.Order;
+global using MyProject.ViewModels.Product;
+global using MyProject.ViewModels.User;
 global using MyProject.Services;
 global using MyProject.Interfaces;
 global using MyProject.Controllers;

@@ -1,10 +1,10 @@
 ﻿namespace MyProject.Services;
 
-public class CustomerService : ICustomerService
+public class CustomerService : BaseService, ICustomerService
 {
     private readonly HttpClient _httpClient = null!;
 
-    public CustomerService(HttpClient httpClient)
+    public CustomerService(HttpClient httpClient, IConfiguration configuration) : base(configuration)
     {
         _httpClient = httpClient;
     }
@@ -12,8 +12,8 @@ public class CustomerService : ICustomerService
     public async Task<IEnumerable<CustomerViewModel>> GetAllCustomersAsync()
     {
         // No need to create Client
-
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<CustomerViewModel>>("https://deliverywebapi.azurewebsites.net/api/customers");
+        var url = GetUrl("customers");
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<CustomerViewModel>>(url);
 
         if (response is not null)
         {
@@ -25,7 +25,8 @@ public class CustomerService : ICustomerService
 
     public async Task<CustomerViewModel> GetCustomerByFullNameAsync(string fullName)
     {
-        var response = await _httpClient.GetFromJsonAsync<CustomerViewModel>("https://deliverywebapi.azurewebsites.net/api/customers" + "/" + fullName);
+        var url = GetUrl("customers");
+        var response = await _httpClient.GetFromJsonAsync<CustomerViewModel>(url + "/" + fullName);
 
         if (response is not null)
         {
@@ -37,7 +38,8 @@ public class CustomerService : ICustomerService
 
     public async Task<Response> PostCustomerAsync(CustomerViewModel customer)
     {
-        var response = await _httpClient.PostAsJsonAsync("https://deliverywebapi.azurewebsites.net/api/customers", customer);
+        var url = GetUrl("customers");
+        var response = await _httpClient.PostAsJsonAsync(url, customer);
         
         var result = new Response(response.Content, (Int32)response.StatusCode);
         return result;

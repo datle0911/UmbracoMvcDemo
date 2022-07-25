@@ -29,15 +29,28 @@ public class Startup
     /// </remarks>
     public void ConfigureServices(IServiceCollection services)
     {
+        #region Add Service lifetime
         services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IOrderService, OrderService>();
+        #endregion
+        #region Add Http Client services
+        var deliveryUri = _config.GetSection("ApiUrl:DeliveryUri").Value;
         services.AddHttpClient<CustomerService>(
             client =>
             {
                 // Set the base address of the named client.
-                client.BaseAddress = new Uri("https://deliverywebapi.azurewebsites.net/");
+                client.BaseAddress = new Uri(deliveryUri);
                 client.Timeout = TimeSpan.FromSeconds(5);
             });
-        
+        services.AddHttpClient<OrderService>(
+            client =>
+            {
+                // Set the base address of the named client.
+                client.BaseAddress = new Uri(deliveryUri);
+                client.Timeout = TimeSpan.FromSeconds(7);
+            });
+        #endregion
+
         services.AddUmbraco(_env, _config)
             .AddBackOffice()
             .AddWebsite()

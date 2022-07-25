@@ -33,9 +33,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Order\" />
-    <Folder Include="ViewModels\Product\" />
-    <Folder Include="ViewModels\User\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="wwwroot" />
   </ItemGroup>
