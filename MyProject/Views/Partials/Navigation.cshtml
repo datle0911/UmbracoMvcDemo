@@ -18,38 +18,16 @@
 {
     <div class="container">
         <nav class ="navbar navbar-expand navbar-light">
-            <a class ="navbar-brant font-weight-bold" href="@Model.Root().Url()">Umbraco Demo</a>
+            <a class ="navbar-brant font-weight-bold" href="@Model.Root().Url()">@Model.Root().Name</a>
             <!-- Links -->
             <u1 class="navbar-nav">
-            @foreach (var item in selection)
-            {
-                @*<li class="@(item.IsAncestorOrSelf(Model?.Content) ? "current" : null)">
-                    <a href="@item.Url(PublishedUrlProvider)">@item.Name</a>
-                </li>*@
-                
-                <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
-                    <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
-                </li>
-            }
-        </u1>
+                @foreach (var item in selection)
+                {
+                    <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
+                        <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                    </li>
+                }
+            </u1>
         </nav>
     </div>
 }
-
-@*<div class="container">
-    <nav class ="navbar navbar-expand navbar-light">
-        <a class ="navbar-brant font-weight-bold" href="index.html">Umbraco Demo</a>
-        <!-- Links -->
-        <u1 class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="Content.html">Content Page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Customer.html">Content 2 Page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="ViewersPage.html">Viewers Page</a>
-            </li>
-        </u1>
-    </nav>
-</div>*@
