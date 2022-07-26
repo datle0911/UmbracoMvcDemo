@@ -23,10 +23,10 @@ public class CustomerService : BaseService, ICustomerService
         return null;
     }
 
-    public async Task<CustomerViewModel> GetCustomerByFullNameAsync(string fullName)
+    public async Task<IEnumerable<CustomerViewModel>> GetCustomerByFullNameAsync(string fullName)
     {
         var url = GetUrl("customers");
-        var response = await _httpClient.GetFromJsonAsync<CustomerViewModel>(url + "/" + fullName);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<CustomerViewModel>>(url + "/" + fullName);
 
         if (response is not null)
         {

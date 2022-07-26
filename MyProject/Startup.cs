@@ -32,6 +32,8 @@ public class Startup
         #region Add Service lifetime
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<Interfaces.IUserService, UserService>();
         #endregion
         #region Add Http Client services
         var deliveryUri = _config.GetSection("ApiUrl:DeliveryUri").Value;
@@ -41,6 +43,20 @@ public class Startup
                 // Set the base address of the named client.
                 client.BaseAddress = new Uri(deliveryUri);
                 client.Timeout = TimeSpan.FromSeconds(5);
+            });
+        services.AddHttpClient<UserService>(
+            client =>
+            {
+                // Set the base address of the named client.
+                client.BaseAddress = new Uri(deliveryUri);
+                client.Timeout = TimeSpan.FromSeconds(5);
+            });
+        services.AddHttpClient<ProductService>(
+            client =>
+            {
+                // Set the base address of the named client.
+                client.BaseAddress = new Uri(deliveryUri);
+                client.Timeout = TimeSpan.FromSeconds(7);
             });
         services.AddHttpClient<OrderService>(
             client =>
