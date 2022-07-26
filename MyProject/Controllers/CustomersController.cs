@@ -1,8 +1,8 @@
 ﻿namespace MyProject.Controllers;
-public class CustomerFormController : SurfaceController
+public class CustomersController : SurfaceController
 {
     private readonly ICustomerService _customerService;
-    public CustomerFormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, ICustomerService customerService) 
+    public CustomersController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, ICustomerService customerService) 
         : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
     {
         _customerService = customerService;

@@ -2,32 +2,32 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model MyProject.ViewModels.CustomerViewModel
-@using(Html.BeginUmbracoForm("Submit", "CustomerForm"))
+@using(Html.BeginUmbracoForm("Submit", "Customers"))
 {
     <h3>New Donator - Join Us</h3>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.CustomerUserName)
+        @Html.LabelFor(c => c.CustomerUserName, "Username")
         @Html.TextBoxFor(c => c.CustomerUserName, new { @class="form-control"})
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.CustomerPassword)
+        @Html.LabelFor(c => c.CustomerPassword, "Password")
         @Html.TextBoxFor(c => c.CustomerPassword, new { @class="form-control"})
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.CustomerFullName)
+        @Html.LabelFor(c => c.CustomerFullName, "Full Name")
         @Html.TextBoxFor(c => c.CustomerFullName, new { @class="form-control"})
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.CustomerPhoneNumber)
+        @Html.LabelFor(c => c.CustomerPhoneNumber, "Phone Number")
         @Html.TextBoxFor(c => c.CustomerPhoneNumber, new { @class="form-control"})
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.CustomerEmail)
+        @Html.LabelFor(c => c.CustomerEmail, "Email")
         @Html.TextBoxFor(c => c.CustomerEmail, new { @class="form-control"})
     </div>
 
