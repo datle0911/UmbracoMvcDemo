@@ -1,6 +1,6 @@
 ﻿namespace MyProject.Services;
 
-public class ImageService : IimageService
+public class ImageService : IImageService
 {
     public FileContentResult GetImage(ProductViewModel productViewModel)
     {

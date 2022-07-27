@@ -34,7 +34,7 @@ public class Startup
         services.AddScoped<IOrderService, OrderService>();
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<Interfaces.IUserService, UserService>();
-        services.AddScoped<IimageService, ImageService>();
+        services.AddScoped<IImageService, ImageService>();
         #endregion
         #region Add Http Client services
         var deliveryUri = _config.GetSection("ApiUrl:DeliveryUri").Value;
