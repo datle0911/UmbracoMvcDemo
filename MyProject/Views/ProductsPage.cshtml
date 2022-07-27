@@ -4,3 +4,9 @@
 @{
 	Layout = "Master.cshtml";
 }
+
+<div class="container">
+	<div class="row g-0">
+		@await Html.PartialAsync("ProductsList")   
+	</div>
+</div>

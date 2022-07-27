@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyProject.Interfaces;
+
+@inject IProductService _productService
+@{
+    var products = await _productService.GetMiminalProductsAsync();
+}
+@foreach (var product in products)
+{
+    <div class="card col-3 m-2">
+        <div class="card-header">
+            @product.ProductName
+        </div>
+        <div class="card-body">
+            <h6 class="card-title text-truncate">
+                Price: $@product.ProductPrice
+            </h6>
+            <a href="#" class="btn btn-primary">Go to details</a>
+        </div>
+        <div class="card-footer text-muted">
+            <small>@product.ProductStatus</small>    
+        </div>
+    </div>
+}
