@@ -10,4 +10,15 @@ public class ProductsController : SurfaceController
         _productService = productService;
         _imageService = imageService;
     }
+
+    //public async Task<IActionResult> ProductDetails(int id)
+    //{
+    //    var product = await _productService.GetProductDetailsById(id);
+    //    return View(id);
+    //}
+    public async Task<IActionResult> ProductDetails(int id)
+    {
+        var product = await _productService.GetProductDetailsById(id);
+        return Ok(product);
+    }
 }

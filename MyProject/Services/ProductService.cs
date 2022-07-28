@@ -21,6 +21,19 @@ public class ProductService : BaseService, IProductService
         return null;
     }
 
+    public async Task<ProductViewModel> GetProductDetailsById(int id)
+    {
+        var url = GetUrl("products", id.ToString());
+        var response = await _httpClient.GetFromJsonAsync<ProductViewModel>(url);
+
+        if (response is not null)
+        {
+            return response;
+        }
+
+        return null;
+    }
+
     public async Task<IEnumerable<ProductViewModel>> GetProductsAsync()
     {
         var url = GetUrl("products", false);

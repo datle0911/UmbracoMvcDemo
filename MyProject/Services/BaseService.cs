@@ -22,4 +22,11 @@ public class BaseService
         var url = _configuration.GetSection("ApiUrl:DeliveryUri").Value + _configuration.GetSection(endpointSection).Value + "?minimal=" + minimal.ToString();
         return url;
     }
+
+    protected string GetUrl(string endpoint, string route)
+    {
+        var endpointSection = "ApiUrl:" + endpoint;
+        var url = _configuration.GetSection("ApiUrl:DeliveryUri").Value + _configuration.GetSection(endpointSection).Value + "/" + route;
+        return url;
+    }
 }

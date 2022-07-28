@@ -4,4 +4,5 @@ public interface IProductService
 {
     public Task<IEnumerable<MinimalProductViewModel>> GetMiminalProductsAsync();
     public Task<IEnumerable<ProductViewModel>> GetProductsAsync();
+    public Task<ProductViewModel> GetProductDetailsById(int id);
 }
