@@ -11,14 +11,12 @@ public class ProductsController : SurfaceController
         _imageService = imageService;
     }
 
-    //public async Task<IActionResult> ProductDetails(int id)
-    //{
-    //    var product = await _productService.GetProductDetailsById(id);
-    //    return View(id);
-    //}
     public async Task<IActionResult> ProductDetails(int id)
     {
         var product = await _productService.GetProductDetailsById(id);
-        return Ok(product);
+        var imgData = _imageService.GetImage(product.ProductImage);
+        ViewBag.Product = product;
+        ViewBag.Image = imgData;
+        return View();
     }
 }

@@ -103,6 +103,8 @@ public class Startup
                 u.UseWebsiteEndpoints();
             });
 
+        app.UseStaticFiles();
+
         app.UseAuthentication();
 
         app.UseAuthorization();

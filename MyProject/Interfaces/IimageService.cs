@@ -2,5 +2,5 @@
 
 public interface IImageService
 {
-    public FileContentResult GetImage(ProductViewModel productViewModel);
+    public string GetImage(byte[] image);
 }
