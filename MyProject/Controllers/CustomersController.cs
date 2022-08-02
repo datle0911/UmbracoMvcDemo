@@ -31,9 +31,14 @@ public class CustomersController : SurfaceController
             model.CustomerPhoneNumber is null || 
             model.CustomerEmail is null)
         {
-            return BadRequest("Failed to save (one or more index be null)");
+            var response = new Response("FIELD(S) ARE MISSING", 404);
+            ViewBag.Response = response;
+            return View("ResponsePage");
         }
+
         var result = await _customerService.PostCustomerAsync(model);
-        return Ok(result);
+        ViewBag.Response = result;
+        return View("ResponsePage");
     }
+
 }

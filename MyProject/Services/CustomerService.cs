@@ -41,7 +41,7 @@ public class CustomerService : BaseService, ICustomerService
         var url = GetUrl("customers");
         var response = await _httpClient.PostAsJsonAsync(url, customer);
         
-        var result = new Response(response.Content, (Int32)response.StatusCode);
+        var result = new Response(response.StatusCode.ToString(), (Int32)response.StatusCode);
         return result;
     }
 }
