@@ -4,11 +4,11 @@
 <div class="card">
     <div class="card-body text-center">
         <h2>ID: @ViewBag.Product.ProductId</h2>
-        <h3>Name: @ViewBag.Product.ProductName</h3>
-        <h4>@ViewBag.Product.Description</h4>
+        <h3>@ViewBag.Product.ProductName</h3>
+        <h4>Description: @ViewBag.Product.Description</h4>
         <small>bủh bủh</small> 
-        <img src= "data:image/jpg;base64,@ViewBag.Image">
     </div>    
+    <img src= "data:image/jpg;base64,@ViewBag.Image">
 </div>
 <img src= "data:image/jpg;base64,@ViewBag.Image" style="overflow:hidden;position:relative; width:1200px; height:1200px; cursor:pointer">
 <img src= "@ViewBag.Image">
