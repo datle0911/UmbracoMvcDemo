@@ -9,11 +9,11 @@ public class CustomerService : BaseService, ICustomerService
         _httpClient = httpClient;
     }
 
-    public async Task<IEnumerable<CustomerViewModel>> GetAllCustomersAsync()
+    public async Task<IEnumerable<Customer>> GetAllCustomersAsync()
     {
         // No need to create Client
         var url = GetUrl("customers");
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<CustomerViewModel>>(url);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<Customer>>(url);
 
         if (response is not null)
         {
@@ -23,10 +23,10 @@ public class CustomerService : BaseService, ICustomerService
         return null;
     }
 
-    public async Task<IEnumerable<CustomerViewModel>> GetCustomerByFullNameAsync(string fullName)
+    public async Task<IEnumerable<Customer>> GetCustomerByFullNameAsync(string fullName)
     {
         var url = GetUrl("customers");
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<CustomerViewModel>>(url + "/" + fullName);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<Customer>>(url + "/" + fullName);
 
         if (response is not null)
         {
@@ -36,7 +36,7 @@ public class CustomerService : BaseService, ICustomerService
         return null;
     }
 
-    public async Task<Response> PostCustomerAsync(CustomerViewModel customer)
+    public async Task<Response> PostCustomerAsync(Customer customer)
     {
         var url = GetUrl("customers");
         var response = await _httpClient.PostAsJsonAsync(url, customer);

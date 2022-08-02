@@ -1,4 +1,4 @@
-﻿namespace MyProject.ViewModels;
+﻿namespace MyProject.Models;
 
 public class Response
 {

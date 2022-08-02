@@ -2,5 +2,5 @@
 
 public interface IUserService
 {
-    public Task<IEnumerable<UserViewModel>> GetUserByNameAsync(string fullName);
+    public Task<IEnumerable<User>> GetUserByNameAsync(string fullName);
 }

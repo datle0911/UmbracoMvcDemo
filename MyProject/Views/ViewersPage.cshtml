@@ -1,5 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@using MyProject.ViewModels;
+@using MyProject.Models;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ViewersPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6">
                     @{
-                        Html.RenderPartial("~/Views/Partials/CustomerForm.cshtml", new CustomerViewModel());
+                        Html.RenderPartial("~/Views/Partials/CustomerForm.cshtml", new Customer());
                      }
 				</div>
                 <div class="col-md-6">

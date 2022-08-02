@@ -8,16 +8,22 @@ public class CustomersController : SurfaceController
         _customerService = customerService;
     }
 
+    public async Task<IEnumerable<Customer>> GetCustomersList()
+    {
+        var customers = await _customerService.GetAllCustomersAsync();
+        return customers;
+    }
+
     public IActionResult Render()
     {
-        var customer = new CustomerViewModel();
+        var customer = new Customer();
         return PartialView("CustomerForm", customer);
     }
 
     [HttpPost]
     [ValidateUmbracoFormRouteString]
     [ActionName("Submit")]
-    public async Task<IActionResult> SubmitOnPost(CustomerViewModel model)
+    public async Task<IActionResult> SubmitOnPost(Customer model)
     {
         if( model.CustomerUserName is null ||
             model.CustomerPassword is null || 

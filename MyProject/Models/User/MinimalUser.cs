@@ -1,8 +1,8 @@
-﻿namespace MyProject.ViewModels.User;
+﻿namespace MyProject.Models.User;
 
-public class MinimalUserViewModel
+public class MinimalUser
 {
-    public MinimalUserViewModel(string userName, string password)
+    public MinimalUser(string userName, string password)
     {
         UserName = userName;
         Password = password;

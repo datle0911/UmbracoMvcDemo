@@ -2,7 +2,7 @@
 
 public interface IProductService
 {
-    public Task<IEnumerable<MinimalProductViewModel>> GetMiminalProductsAsync();
-    public Task<IEnumerable<ProductViewModel>> GetProductsAsync();
-    public Task<ProductViewModel> GetProductDetailsById(int id);
+    public Task<IEnumerable<MinimalProduct>> GetMiminalProductsAsync();
+    public Task<IEnumerable<Product>> GetProductsAsync();
+    public Task<Product> GetProductDetailsById(int id);
 }

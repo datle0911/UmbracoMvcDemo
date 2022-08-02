@@ -9,10 +9,10 @@ public class OrderService : BaseService, IOrderService
         _httpClient = httpClient;
     }
     
-    public async Task<IEnumerable<MinimalOrderViewModel>> GetMiminalOrdersAsync()
+    public async Task<IEnumerable<MinimalOrder>> GetMiminalOrdersAsync()
     {
         var url = GetUrl("orders", true);
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<MinimalOrderViewModel>>(url);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<MinimalOrder>>(url);
 
         if (response is not null)
         {
@@ -22,10 +22,10 @@ public class OrderService : BaseService, IOrderService
         return null;
     }
 
-    public async Task<IEnumerable<OrderViewModel>> GetOrdersAsync()
+    public async Task<IEnumerable<Order>> GetOrdersAsync()
     {
         var url = GetUrl("orders", false);
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<OrderViewModel>>(url);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<Order>>(url);
 
         if (response is not null)
         {

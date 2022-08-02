@@ -8,10 +8,10 @@ public class UserService : BaseService, Interfaces.IUserService
         _httpClient = httpClient;
     }
 
-    public async Task<IEnumerable<UserViewModel>> GetUserByNameAsync(string fullName)
+    public async Task<IEnumerable<User>> GetUserByNameAsync(string fullName)
     {
         var url = GetUrl("users");
-        var response = await _httpClient.GetFromJsonAsync<IEnumerable<UserViewModel>>(url + "/" + fullName);
+        var response = await _httpClient.GetFromJsonAsync<IEnumerable<User>>(url + "/" + fullName);
 
         if (response is not null)
         {

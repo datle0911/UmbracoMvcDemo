@@ -1,17 +1,12 @@
-﻿namespace MyProject.ViewModels.Order;
+﻿namespace MyProject.Models.Order;
 
-public class MinimalOrderViewModel
+public class Order
 {
-    public MinimalOrderViewModel()
-    {
-
-    }
-
-    public MinimalOrderViewModel(string orderId, string customerFullName, int numberOfDetails, DateTime orderTimestamp, string orderAddress, string orderQrCode, string orderRobot, double totalPrice, EOrderStatus orderStatus, EOrderTracking orderTracking)
+    public Order(string orderId, Customer customer, List<OrderDetail> details, DateTime orderTimestamp, string orderAddress, string orderQrCode, string orderRobot, double totalPrice, EOrderStatus orderStatus, EOrderTracking orderTracking)
     {
         OrderId = orderId;
-        CustomerFullName = customerFullName;
-        NumberOfDetails = numberOfDetails;
+        Customer = customer;
+        Details = details;
         OrderTimestamp = orderTimestamp;
         OrderAddress = orderAddress;
         OrderQrCode = orderQrCode;
@@ -20,10 +15,14 @@ public class MinimalOrderViewModel
         OrderStatus = orderStatus;
         OrderTracking = orderTracking;
     }
+    public Order()
+    {
+
+    }
 
     public string OrderId { get; set; }
-    public string CustomerFullName { get; set; }
-    public int NumberOfDetails { get; set; }
+    public Customer Customer { get; set; } = new Customer();
+    public List<OrderDetail> Details { get; set; } = new List<OrderDetail>();
     public DateTime OrderTimestamp { get; set; }
     public string OrderAddress { get; set; }
     public string OrderQrCode { get; set; }
