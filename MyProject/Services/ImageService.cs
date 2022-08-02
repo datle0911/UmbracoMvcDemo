@@ -1,11 +1,11 @@
 ﻿namespace MyProject.Services;
 
-public class ImageService : IimageService
+public class ImageService : IImageService
 {
-    public FileContentResult GetImage(ProductViewModel productViewModel)
+    public string GetImage(byte[] image)
     {
-        var image = productViewModel.ProductImage;
-
-        return new FileContentResult(image, "ProductImage.jpg");
+        string imgBase64Data = Convert.ToBase64String(image);
+        string imgDataURL = string.Format("data:image/jpg;base64", imgBase64Data);
+        return imgDataURL;
     }
 }

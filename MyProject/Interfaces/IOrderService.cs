@@ -2,6 +2,6 @@
 
 public interface IOrderService
 {
-    public Task<IEnumerable<MinimalOrderViewModel>> GetMiminalOrdersAsync();
-    public Task<IEnumerable<OrderViewModel>> GetOrdersAsync();
+    public Task<IEnumerable<MinimalOrder>> GetMiminalOrdersAsync();
+    public Task<IEnumerable<Order>> GetOrdersAsync();
 }

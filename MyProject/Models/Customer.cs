@@ -1,12 +1,12 @@
-﻿namespace MyProject.ViewModels;
+﻿namespace MyProject.Models;
 
-public class CustomerViewModel
+public class Customer
 {
-    public CustomerViewModel()
+    public Customer()
     {
 
     }
-    public CustomerViewModel(string customerUserName, string customerPassword, string customerFullName, string customerPhoneNumber, string customerEmail)
+    public Customer(string customerUserName, string customerPassword, string customerFullName, string customerPhoneNumber, string customerEmail)
     {
         CustomerUserName = customerUserName;
         CustomerPassword = customerPassword;

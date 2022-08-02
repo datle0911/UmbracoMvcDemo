@@ -1,12 +1,12 @@
-﻿namespace MyProject.ViewModels.User;
+﻿namespace MyProject.Models.User;
 
-public class UserViewModel
+public class User
 {
-    public UserViewModel()
+    public User()
     {
 
     }
-    public UserViewModel(string userName, string password, string fullName, string phoneNumber, ERoles roles)
+    public User(string userName, string password, string fullName, string phoneNumber, ERoles roles)
     {
         UserName = userName;
         Password = password;

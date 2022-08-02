@@ -1,13 +1,14 @@
-﻿namespace MyProject.ViewModels.Product;
+﻿namespace MyProject.Models.Product;
 
-public class ProductViewModel
+public class Product
 {
-    public ProductViewModel()
+    public Product()
     {
 
     }
-    public ProductViewModel(string productName, string description, byte[] productImage, double productPrice, EProductStatus productStatus)
+    public Product(int productId, string productName, string description, byte[] productImage, double productPrice, EProductStatus productStatus)
     {
+        ProductId = productId;
         ProductName = productName;
         Description = description;
         ProductImage = productImage;
@@ -15,6 +16,7 @@ public class ProductViewModel
         ProductStatus = productStatus;
     }
 
+    public int ProductId { get; set; }
     public string ProductName { get; set; }
     public string Description { get; set; }
     public byte[] ProductImage { get; set; }

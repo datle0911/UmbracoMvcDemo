@@ -1,0 +1,53 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ResponsePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Umbraco Demo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	
+	<body>
+		<!-- Jumbotron, w title -->
+		<div class="jumbotron text-center jumbotron-fluid">
+			<div class="container">
+				<h2 class="display-1">@ViewBag.Response.StatusCodes - @ViewBag.Response.Content</h2>
+				<p>STATUS CODE</p>
+			</div>
+		</div>
+		<!-- This is where we're going to render our content -->
+		
+    	<div class="container">
+            <div class="row section text-center">
+                <div class="col-md-12">
+					<a href="javascript:void(0);" onclick="history.go(-1);">Back to previous page</a>
+                </div>
+            </div>
+        </div>
+	
+		<!-- Footer -->
+		<div class="container-fluid footer">
+			<div class="container">
+			    <div class="text-center">
+			        Copyright dat.lt
+					<img src="/images/arm_with_u_logo.png" class="img-fluid" alt="Arm with Umbraco Logo">
+				</div>
+			</div>
+
+		</div>
+	
+	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	</body>
+</html>

@@ -3,11 +3,20 @@
 public class ProductsController : SurfaceController
 {
     private readonly IProductService _productService;
-    private readonly IimageService _imageService;
-    public ProductsController(IProductService productService, IimageService iimageService, IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) 
+    private readonly IImageService _imageService;
+    public ProductsController(IProductService productService, IImageService imageService, IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) 
         : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
     {
         _productService = productService;
-        _imageService = iimageService;
+        _imageService = imageService;
+    }
+
+    public async Task<IActionResult> ProductDetails(int id)
+    {
+        var product = await _productService.GetProductDetailsById(id);
+        var imgData = _imageService.GetImage(product.ProductImage);
+        ViewBag.Product = product;
+        ViewBag.Image = imgData;
+        return View();
     }
 }

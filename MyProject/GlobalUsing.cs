@@ -25,10 +25,9 @@ global using Umbraco.Cms.Infrastructure.Persistence;
 
 global using MyProject.Models;
 global using MyProject.Models.Enums;
-global using MyProject.ViewModels;
-global using MyProject.ViewModels.Order;
-global using MyProject.ViewModels.Product;
-global using MyProject.ViewModels.User;
+global using MyProject.Models.Order;
+global using MyProject.Models.Product;
+global using MyProject.Models.User;
 global using MyProject.Services;
 global using MyProject.Interfaces;
 global using MyProject.Controllers;

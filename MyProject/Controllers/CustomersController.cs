@@ -8,16 +8,22 @@ public class CustomersController : SurfaceController
         _customerService = customerService;
     }
 
+    public async Task<IEnumerable<Customer>> GetCustomersList()
+    {
+        var customers = await _customerService.GetAllCustomersAsync();
+        return customers;
+    }
+
     public IActionResult Render()
     {
-        var customer = new CustomerViewModel();
+        var customer = new Customer();
         return PartialView("CustomerForm", customer);
     }
 
     [HttpPost]
     [ValidateUmbracoFormRouteString]
     [ActionName("Submit")]
-    public async Task<IActionResult> SubmitOnPost(CustomerViewModel model)
+    public async Task<IActionResult> SubmitOnPost(Customer model)
     {
         if( model.CustomerUserName is null ||
             model.CustomerPassword is null || 
@@ -25,9 +31,14 @@ public class CustomersController : SurfaceController
             model.CustomerPhoneNumber is null || 
             model.CustomerEmail is null)
         {
-            return BadRequest("Failed to save (one or more index be null)");
+            var response = new Response("FIELD(S) ARE MISSING", 404);
+            ViewBag.Response = response;
+            return View("ResponsePage");
         }
+
         var result = await _customerService.PostCustomerAsync(model);
-        return Ok(result);
+        ViewBag.Response = result;
+        return View("ResponsePage");
     }
+
 }
